@@ -150,7 +150,7 @@ def start_end_date():
     session.close()
 
     # Convert list of tuples into normal list
-    temps = list(np.ravel(start_end_date_temps))
+    temps = list(np.ravel(start_end_fdate_temps))
 
     return jsonify(temps)
 
