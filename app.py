@@ -37,7 +37,7 @@ def home():
         f"/api/v1.0/stations<br/>"
 	    f"/api/v1.0/tobs<br/>"
         f"/api/v1.0/start_date<br/>"
-        f"/api/v1.0/start_end_date/<end>"
+        f"/api/v1.0/start_end_date"
     )
 
 # Precipitation route
@@ -139,18 +139,21 @@ def start_end_date():
 
     # Query for max, min, avg temperature for starting date
 
-    query_date = dt.date(2011, 8, 23)
+    start_date = dt.date(2011, 8, 23)
+    end_date = dt.date(2011, 9, 30)
+
+    #query_date = start_date - end_date
 
     start_end_date_temps = session.query(
         (func.min(Measurement.tobs)),
         (func.max(Measurement.tobs)),
         (func.avg(Measurement.tobs))).\
-    filter(Measurement.date >= query_date).all()
+    filter(Measurement.date >= start_date).filter(Measurement.date <= end_date).all()
 
     session.close()
 
     # Convert list of tuples into normal list
-    temps = list(np.ravel(start_end_fdate_temps))
+    temps = list(np.ravel(start_end_date_temps))
 
     return jsonify(temps)
 
