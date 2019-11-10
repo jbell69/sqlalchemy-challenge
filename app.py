@@ -33,9 +33,9 @@ def home():
     return (
         f"Welcome to Hawaii Climate homepage!<br/>"
 	    f"Available Routes:<br/>"
-        f"/api/v1.0/precipitation<br/>"
-        f"/api/v1.0/stations<br/>"
-	    f"/api/v1.0/tobs<br/>"
+        f'<a href="http://127.0.0.1:5000/api/v1.0/precipitation">All Station Precipitation</a><br/>'
+        f'<a href="http://127.0.0.1:5000/api/v1.0/stations">All Station List</a><br/>'
+	    f'<a href="http://127.0.0.1:5000/api/v1.0/tobs">Observed Temperatures</a><br/>'
         f"/api/v1.0/start_date<br/>"
         f"/api/v1.0/start_end_date"
     )
